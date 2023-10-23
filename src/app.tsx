@@ -2,6 +2,7 @@ import preactLogo from './assets/preact.svg'
 import viteLogo from '/vite.svg'
 import { ToolTip } from './components/ToolTip'
 import { Counter } from './components/Couter'
+import { Form } from './components/Form'
 import './app.css'
 
 export function App() {
@@ -19,6 +20,7 @@ export function App() {
       <div class="card">
         <ToolTip buttonText='このボタンにホバーしてね！' hiddenText='OKです！'/>
         <Counter/>
+        <Form/>
       </div>
     </>
   )
