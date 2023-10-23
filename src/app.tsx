@@ -3,6 +3,7 @@ import viteLogo from '/vite.svg'
 import { ToolTip } from './components/ToolTip'
 import { Counter } from './components/Couter'
 import { Form } from './components/Form'
+import { Pokemon } from './components/Pokemon'
 import './app.css'
 
 export function App() {
@@ -21,6 +22,7 @@ export function App() {
         <ToolTip buttonText='このボタンにホバーしてね！' hiddenText='OKです！'/>
         <Counter/>
         <Form/>
+        <Pokemon />
       </div>
     </>
   )
