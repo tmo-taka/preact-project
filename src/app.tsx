@@ -1,5 +1,7 @@
 import preactLogo from './assets/preact.svg'
 import viteLogo from '/vite.svg'
+import { useErrorBoundary } from "preact/hooks";
+import { Suspense} from "preact/compat";
 import { ToolTip } from './components/ToolTip'
 import { Counter } from './components/Couter'
 import { Form } from './components/Form'
@@ -7,6 +9,11 @@ import { Pokemon } from './components/Pokemon'
 import './app.css'
 
 export function App() {
+  const [error] = useErrorBoundary(error => console.log(error));
+  console.log(error);
+  const PokemonCom = () => {
+    return error ? <div>エラーですやん</div> : <Pokemon />
+  }
   return (
     <>
       <div>
@@ -22,7 +29,9 @@ export function App() {
         <ToolTip buttonText='このボタンにホバーしてね！' hiddenText='OKです！'/>
         <Counter/>
         <Form/>
-        <Pokemon />
+        <Suspense fallback={<div>Loading...</div>}>
+          <PokemonCom />
+        </Suspense>
       </div>
     </>
   )

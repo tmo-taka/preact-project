@@ -1,17 +1,22 @@
 import { useState, useEffect } from "preact/hooks";
 
-
 export const Pokemon: preact.FunctionComponent = () => {
-    const [ability, setAbility] = useState([]);
+    const [pokeImg, setPokeImg] = useState('');
 
     useEffect(() => {
         const fetchPoke = async() => {
-            const data = await (await fetch('/pokeApi/1')).json();
-            console.log(data);
-            const { abilities }:[] = data;
-            console.log(abilities)
-            await setAbility([...ability, ...abilities]);
-            console.log(ability);
+            try {
+                const data = await (await fetch('/pokeApi/1')).json();
+                console.log(data);
+                const { sprites } = data;
+                const url = sprites.front_default;
+                await setTimeout(async() => {
+                    await setPokeImg(url);
+                }, 5000);
+                console.log(pokeImg);
+            } catch(e) {
+                throw e;
+            }
         }
         fetchPoke();
     },[])
@@ -19,6 +24,9 @@ export const Pokemon: preact.FunctionComponent = () => {
     return (
         <>
             <div>ポケモン</div>
+            <div>
+                <img src={pokeImg} alt="" />
+            </div>
         </>
     );
 };
