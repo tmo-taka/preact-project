@@ -1,6 +1,7 @@
 import { useState, useEffect } from "preact/hooks";
 
 const Pokemon: preact.FunctionComponent = () => {
+    console.log('読み込まれた')
     const [pokeImg, setPokeImg] = useState('');
 
     useEffect(() => {

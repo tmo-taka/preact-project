@@ -1,12 +1,11 @@
 import preactLogo from './assets/preact.svg'
 import viteLogo from '/vite.svg'
-import { useErrorBoundary } from "preact/hooks";
+import { useState, useErrorBoundary } from "preact/hooks";
 import { Suspense, lazy} from "preact/compat";
 import { ToolTip } from './components/ToolTip'
 import { Counter } from './components/Couter'
 import { Form } from './components/Form'
 import './app.css'
-const Pokemon = lazy(() => import('./components/Pokemon'));
 
 export function App() {
   // const [error] = useErrorBoundary(error => console.log(error));
@@ -14,6 +13,22 @@ export function App() {
   // const PokemonCom = () => {
   //   return error ? <div>エラーですやん</div> : <Pokemon />
   // }
+  const [displayPokemon , setDisplayPokemon] = useState(false);
+
+  const Pokemon = lazy(() => import('./components/Pokemon'));
+
+  const DynamicPokemon = () =>{
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <Pokemon />
+      </Suspense>
+    )
+  }
+
+  const clickPokemon = () =>{
+    setDisplayPokemon(true);
+  }
+
   return (
     <>
       <div>
@@ -29,9 +44,10 @@ export function App() {
         <ToolTip buttonText='このボタンにホバーしてね！' hiddenText='OKです！'/>
         <Counter/>
         <Form/>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Pokemon />
-        </Suspense>
+        <div>
+          <button onClick={() => clickPokemon()}>ポケモンを表示する</button>
+          {displayPokemon  ? <DynamicPokemon />  : <div>ポケモン表示しないよ！</div>}
+        </div>
       </div>
     </>
   )
