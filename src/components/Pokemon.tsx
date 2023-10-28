@@ -1,18 +1,16 @@
 import { useState, useEffect } from "preact/hooks";
 
-export const Pokemon: preact.FunctionComponent = () => {
+const Pokemon: preact.FunctionComponent = () => {
     const [pokeImg, setPokeImg] = useState('');
 
     useEffect(() => {
         const fetchPoke = async() => {
             try {
-                const data = await (await fetch('/pokeApi/1')).json();
+                const data = await (await fetch('/pokeApi/151')).json();
                 console.log(data);
                 const { sprites } = data;
                 const url = sprites.front_default;
-                await setTimeout(async() => {
-                    await setPokeImg(url);
-                }, 5000);
+                await setPokeImg(url);
                 console.log(pokeImg);
             } catch(e) {
                 throw e;
@@ -30,3 +28,5 @@ export const Pokemon: preact.FunctionComponent = () => {
         </>
     );
 };
+
+export default Pokemon
