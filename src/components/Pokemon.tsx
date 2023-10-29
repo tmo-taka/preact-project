@@ -24,12 +24,9 @@ const Pokemon: preact.FunctionComponent = () => {
     },[])
 
     return (
-        <>
-            <div>ポケモン</div>
-            <div>
-                <img src={pokeImg} alt="" />
-            </div>
-        </>
+        <div>
+            <img src={pokeImg} alt="" />
+        </div>
     );
 };
 
