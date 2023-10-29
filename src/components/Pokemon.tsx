@@ -1,14 +1,17 @@
 import { useState, useEffect } from "preact/hooks";
+import { useRecoilValue } from 'recoil';
+import { randomIdState } from "../store/randomId";
 
 const Pokemon: preact.FunctionComponent = () => {
     console.log('読み込まれた')
+    const id = useRecoilValue(randomIdState)
     const [pokeImg, setPokeImg] = useState('');
 
     useEffect(() => {
         const fetchPoke = async() => {
             try {
-                const data = await (await fetch('/pokeApi/151')).json();
-                console.log(data);
+                const apiUrl = `/pokeApi/${id}`;
+                const data =  await (await fetch(apiUrl)).json();
                 const { sprites } = data;
                 const url = sprites.front_default;
                 await setPokeImg(url);
