@@ -8,6 +8,8 @@ const Pokemon = lazy(() => import('./Pokemon'));
 export const DynamicPokemon: preact.FunctionComponent = () => {
     const [displayPokemon , setDisplayPokemon] = useState(false);
     const [randomId, setRandomId] = useRecoilState(randomIdState);
+    const [error] = useErrorBoundary();
+    console.log(error);
 
     const createRandomId = () => {
         const randomNumber = Math.floor( Math.random() * 152 );
@@ -31,7 +33,7 @@ export const DynamicPokemon: preact.FunctionComponent = () => {
         if(displayPokemon) {
             return (
                 <Suspense fallback={<div>Loading...</div>}>
-                    <Pokemon />
+                    {error ? <div>エラーが発生しました</div> : <Pokemon /> }
                 </Suspense>
             )
         } else {

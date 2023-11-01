@@ -11,16 +11,23 @@ const Pokemon: preact.FunctionComponent = () => {
         const fetchPoke = async() => {
             try {
                 const apiUrl = `/pokeApi/${id}`;
+                // throwする
                 const data =  await (await fetch(apiUrl)).json();
+                if( !data ) {throw 'error'}
                 const { sprites } = data;
                 const url = sprites.front_default;
                 await setPokeImg(url);
                 console.log(pokeImg);
-            } catch(e) {
-                throw e;
+            } catch(e:unknown) {
+                console.log(e);
+                throw (e);
             }
         }
-        fetchPoke();
+        try {
+            fetchPoke();
+        } catch (e){
+            throw new Error(e);
+        }
     },[])
 
     return (
