@@ -4,6 +4,7 @@ import { ToolTip } from './components/ToolTip'
 import { Counter } from './components/Couter'
 import { Form } from './components/Form'
 import { DynamicPokemon } from './components/DynamicPokemon'
+import { MemoDemo } from './components/MemoDemo'
 import { RecoilRoot} from 'recoil';
 import './app.css'
 
@@ -26,6 +27,7 @@ export function App() {
         <RecoilRoot>
           <DynamicPokemon />
         </RecoilRoot>
+        <MemoDemo />
       </div>
     </>
   )
