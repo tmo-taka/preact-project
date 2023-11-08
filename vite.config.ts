@@ -10,6 +10,11 @@ export default defineConfig({
         target: 'https://pokeapi.co/api/v2/pokemon',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/pokeApi/, ''),
+      },
+      '/playhtApi': {
+        target: 'https://api.play.ht/api/v2/tts',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/playhtApi/, ''),
       }
     }
   }
