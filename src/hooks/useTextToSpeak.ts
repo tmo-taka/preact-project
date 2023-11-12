@@ -16,6 +16,7 @@ const postOptions = {
 };
 
 export const useTextToSpeak = async(text:string) => {
+
     try {
         const res = await fetch('/playhtApi', postOptions);
         const decoder = new TextDecoder();
@@ -30,12 +31,14 @@ export const useTextToSpeak = async(text:string) => {
                 const decodeData: string = decoder.decode(value);
                 if(decodeData.includes('completed')){
                     const stringifyData = JSON.stringify(decodeData);
+                    // NOTE: mp3のURLを取得する .mp3のlengthに合わせて+4
                     const url = stringifyData.substring(stringifyData.indexOf('https'), (stringifyData.indexOf('.mp3') + 4))
-                    console.log(url)
+                    return url;
                 }
                 return read();
             };
-            await read();
+            const audioUrl = await read();
+            return audioUrl;
         }
     } catch (e) {
         console.log(e)

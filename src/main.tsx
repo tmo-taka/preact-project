@@ -1,5 +1,5 @@
 import { render } from 'preact'
-import { Chat} from './chat.tsx'
+import { App } from './app.tsx'
 import './index.css'
 
-render(<Chat />, document.getElementById('app')!)
+render(<App />, document.getElementById('app')!)
