@@ -12,7 +12,6 @@ export const PlayButton: preact.FunctionComponent<Props>  = (props) => {
     const playAudio = () => {
         if(mp3Url) {
             console.log(mp3Url);
-            console.log(play());
             audio.play();
         } else {
             alert('再生できるファイルがありません');

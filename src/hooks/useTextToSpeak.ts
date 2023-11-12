@@ -1,24 +1,26 @@
-const postOptions = {
-    method: 'POST',
-    headers: {
-        accept: 'text/event-stream',
-        'content-type': 'application/json',
-        AUTHORIZATION: import.meta.env.VITE_PLAYHT_API_SECRET_KEY,
-        'X-USER-ID': import.meta.env.VITE_PLAYHT_API_USER_ID
+const postOptions = (text:string) => {
+    return {
+        method: 'POST',
+        headers: {
+            accept: 'text/event-stream',
+            'content-type': 'application/json',
+            AUTHORIZATION: import.meta.env.VITE_PLAYHT_API_SECRET_KEY,
+            'X-USER-ID': import.meta.env.VITE_PLAYHT_API_USER_ID
 
-    },
-    body: JSON.stringify({
-        text: 'Hello I am money.',
-        voice: 's3://mockingbird-prod/abigail_vo_6661b91f-4012-44e3-ad12-589fbdee9948/voices/speaker/manifest.json',
-        output_format: 'mp3',
-        voice_engine: 'PlayHT2.0'
-    })
+        },
+        body: JSON.stringify({
+            text: text,
+            voice: 's3://mockingbird-prod/abigail_vo_6661b91f-4012-44e3-ad12-589fbdee9948/voices/speaker/manifest.json',
+            output_format: 'mp3',
+            voice_engine: 'PlayHT2.0'
+        })
+    }
 };
 
 export const useTextToSpeak = async(text:string) => {
 
     try {
-        const res = await fetch('/playhtApi', postOptions);
+        const res = await fetch('/playhtApi', postOptions(text));
         const decoder = new TextDecoder();
 
         if(res.body) {
