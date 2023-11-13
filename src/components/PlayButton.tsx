@@ -19,7 +19,7 @@ export const PlayButton: preact.FunctionComponent<Props>  = (props) => {
     }
     return (
         <>
-            <button onClick={() => playAudio()} class="mainBtn" disabled={Boolean(!mp3Url)}>再生する</button>
+            <button onClick={() => playAudio()} class={`mainBtn ${Boolean(!mp3Url) && 'bg-un-active'}`} disabled={Boolean(!mp3Url)}>再生する</button>
         </>
     );
 };
