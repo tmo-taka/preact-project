@@ -15,7 +15,13 @@ export default defineConfig({
         target: 'https://api.play.ht/api/v2/tts',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/playhtApi/, ''),
-      }
+      },
+      '/translateApi': {
+        // target: process.env.VITE_TRANSLATION_API_URL,
+        target: 'https://mt-auto-minhon-mlt.ucri.jgn-x.jp/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/translateApi/, ''),
+      },
     }
   }
 })

@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@preact/signals": "^1.2.1",
+    "axios": "^1.6.2",
+    "axios-oauth-client": "^2.0.4",
     "flowbite-react": "^0.6.4",
     "preact": "^10.16.0",
     "recoil": "^0.7.7",
