@@ -30,9 +30,8 @@ export const useTextToEnglish = async(text:string) => {
             searchParams.append(key, params[key]);
         }
         const res = await axios.post('/translateApi/api/mt/generalNT_ja_en/', searchParams);
-        const jaText:string = res.data.resultset.result.text;
-        console.log(jaText);
-        return jaText;
+        const enText:string = res.data.resultset.result.text;
+        return enText;
     } catch (e) {
         console.log(e)
     }
