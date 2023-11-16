@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useEffect } from "preact/hooks";
 import { useTextToSpeak } from "../hooks/useTextToSpeak"
 import { useRecoilState, useRecoilValue } from "recoil";
 import { mp3UrlState } from '../store/mp3Url';
@@ -9,12 +9,17 @@ import { InputJapaneseForm } from "./InputJapaneseForm";
 import { DisplayText } from './DisplayText'
 
 export const AudioBlock = () => {
-    const [inputText, setInputText] = useState('');
     const [mp3Url,setMp3Url] = useRecoilState(mp3UrlState);
     const englishText = useRecoilValue(englishTextState);
 
+    useEffect(() => {
+        if(englishText){
+            getMp3url();
+        }
+    },[englishText])
+
     const getMp3url = async() => {
-        const audioUrl = await useTextToSpeak(inputText);
+        const audioUrl = await useTextToSpeak(englishText);
         setMp3Url(audioUrl);
     }
 

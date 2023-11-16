@@ -10,13 +10,13 @@ const getClientCredentials = oauth.clientCredentials(
 
 const auth = await getClientCredentials();
 
-const createParams = () => {
+const createParams = (text:string) => {
     const params = {
         access_token: auth.access_token,
         key: import.meta.env.VITE_TRANSLATION_API_KEY,
         name: import.meta.env.VITE_TRANSLATION_USER_ID,
         type: 'json',
-        text: 'こんにちは'
+        text
     }
     return params
 };
@@ -25,7 +25,7 @@ export const useTextToEnglish = async(text:string) => {
 
     try {
         const searchParams = new URLSearchParams();
-        const params = createParams()
+        const params = createParams(text)
         for (let key in params) {
             searchParams.append(key, params[key]);
         }
