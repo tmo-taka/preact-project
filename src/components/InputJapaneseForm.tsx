@@ -1,12 +1,10 @@
-import { useState } from "preact/hooks";
+import { useState, useContext } from "preact/hooks";
 import { useTextToEnglish } from '../hooks/useTextToEnglish'
-import { englishTextState } from '../store/englishText';
-import { useSetRecoilState } from 'recoil'
+import { AppState } from '../store/app'
 
 export const InputJapaneseForm = () => {
-
+    const state = useContext(AppState);
     const [inputText, setInputText] = useState('');
-    const setEnglishText = useSetRecoilState(englishTextState);
 
     const setTextFromForm = (event) => {
         const inputValue = event.target.value;
@@ -16,7 +14,7 @@ export const InputJapaneseForm = () => {
     const translateToEnglish = async() => {
         console.log(inputText);
         const toEnglishText = await useTextToEnglish(inputText);
-        setEnglishText(toEnglishText);
+        state.englishText.value = toEnglishText;
         setInputText('');
     }
 

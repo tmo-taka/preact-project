@@ -1,26 +1,23 @@
-import { useEffect } from "preact/hooks";
+import { useEffect, useContext } from "preact/hooks";
 import { useTextToSpeak } from "../hooks/useTextToSpeak"
-import { useRecoilState, useRecoilValue } from "recoil";
-import { mp3UrlState } from '../store/mp3Url';
-import { englishTextState } from '../store/englishText';
 import { PlayButton } from './PlayButton'
 import { Suspense } from 'preact/compat';
 import { InputJapaneseForm } from "./InputJapaneseForm";
 import { DisplayText } from './DisplayText'
+import { AppState } from '../store/app'
 
 export const AudioBlock = () => {
-    const [mp3Url,setMp3Url] = useRecoilState(mp3UrlState);
-    const englishText = useRecoilValue(englishTextState);
+    const state = useContext(AppState);
 
     useEffect(() => {
-        if(englishText){
+        if(state.englishText.value){
             getMp3url();
         }
-    },[englishText])
+    },[state.englishText.value])
 
     const getMp3url = async() => {
-        const audioUrl = await useTextToSpeak(englishText);
-        setMp3Url(audioUrl);
+        const audioUrl = await useTextToSpeak(state.englishText.value);
+        state.mp3Url.value = audioUrl;
     }
 
     return (
@@ -28,11 +25,11 @@ export const AudioBlock = () => {
             <InputJapaneseForm />
             <div class="flex w-full">
                 <div class="basis-2/3">
-                    <DisplayText englishText={englishText} />
+                    <DisplayText englishText={state.englishText} />
                 </div>
                 <div class="basis-1/3">
                     <Suspense fallback={<div>loading...</div>}>
-                        <PlayButton mp3Url={mp3Url} />
+                        <PlayButton mp3Url={state.mp3Url} />
                     </Suspense>
                 </div>
             </div>

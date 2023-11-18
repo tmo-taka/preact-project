@@ -1,6 +1,7 @@
-import { atom } from "recoil"
+import { signal } from "@preact/signals";
 
-export const englishTextState = atom({
-    key: "englishText",
-    default: '',
-})
+export const createEnglishTextContext = () => {
+    const englishText = signal('')
+    return { englishText }
+}
+
