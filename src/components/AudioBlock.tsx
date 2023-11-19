@@ -25,11 +25,11 @@ export const AudioBlock = () => {
             <InputJapaneseForm />
             <div class="flex w-full">
                 <div class="basis-2/3">
-                    <DisplayText englishText={state.englishText} />
+                    <DisplayText />
                 </div>
                 <div class="basis-1/3">
                     <Suspense fallback={<div>loading...</div>}>
-                        <PlayButton mp3Url={state.mp3Url} />
+                        <PlayButton />
                     </Suspense>
                 </div>
             </div>

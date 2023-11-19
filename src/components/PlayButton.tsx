@@ -1,20 +1,15 @@
-import useSound from 'use-sound';
+import { useContext } from "preact/hooks";
+import { AppState } from '../store/app'
 
-type Props = {
-    mp3Url: {
-        value: string
-    }
-}
-
-export const PlayButton: preact.FunctionComponent<Props>  = (props) => {
-    const {mp3Url} = props;
-    console.log(mp3Url.value);
-    let audio = new Audio(mp3Url.value)
+export const PlayButton: preact.FunctionComponent = () => {
+    const state = useContext(AppState);
+    console.log(state.mp3Url.value);
+    let audio = new Audio(state.mp3Url.value)
     // NOTE: useSound使えない
     // const [play] = useSound(mp3Url);
     const playAudio = () => {
-        if(mp3Url) {
-            console.log(mp3Url.value);
+        if(state.mp3Url.value) {
+            console.log(state.mp3Url.value);
             audio.play();
         } else {
             alert('再生できるファイルがありません');
@@ -22,7 +17,7 @@ export const PlayButton: preact.FunctionComponent<Props>  = (props) => {
     }
     return (
         <>
-            <button onClick={() => playAudio()} class={`mainBtn ${Boolean(!mp3Url.value) && 'bg-un-active'}`} disabled={Boolean(!mp3Url.value)}>再生する</button>
+            <button onClick={() => playAudio()} class={`mainBtn ${Boolean(!state.mp3Url.value) && 'bg-un-active'}`} disabled={Boolean(!state.mp3Url.value)}>再生する</button>
         </>
     );
 };
