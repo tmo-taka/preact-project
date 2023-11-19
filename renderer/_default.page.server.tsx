@@ -4,7 +4,6 @@ import React from "preact/compat";
 import { escapeInject, dangerouslySkipEscape } from "vike/server";
 
 export { render };
-export { passToClient }
 
 async function render(pageContext) {
     const { Page, pageProps } = pageContext;
