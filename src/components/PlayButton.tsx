@@ -1,9 +1,21 @@
-import { useContext } from "preact/hooks";
+import { useEffect, useContext } from "preact/hooks";
+import { useTextToSpeak } from "../hooks/useTextToSpeak"
 import { AppState } from '../store/app'
 
 export const PlayButton: preact.FunctionComponent = () => {
     const state = useContext(AppState);
-    console.log(state.mp3Url.value);
+
+    useEffect(() => {
+        if(state.englishText.value){
+            getMp3url();
+        }
+    },[state.englishText.value])
+
+    const getMp3url = async() => {
+        const audioUrl = await useTextToSpeak(state.englishText.value);
+        state.mp3Url.value = audioUrl;
+    }
+
     let audio = new Audio(state.mp3Url.value)
     // NOTE: useSound使えない
     // const [play] = useSound(mp3Url);

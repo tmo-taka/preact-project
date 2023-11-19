@@ -16,6 +16,6 @@ export const createAppContext = () => {
     return { englishText, mp3Url}
 }
 
-export const AppState = createContext();
+export const AppState = createContext<State>();
 
 
