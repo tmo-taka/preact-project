@@ -1,9 +1,10 @@
 import { defineConfig } from 'vite'
 import preact from '@preact/preset-vite'
+import vike from 'vike/plugin'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [preact()],
+  plugins: [preact(), vike()],
   server: {
     proxy: {
       '/pokeApi' : {

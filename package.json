@@ -14,8 +14,10 @@
     "axios-oauth-client": "^2.0.4",
     "flowbite-react": "^0.6.4",
     "preact": "^10.16.0",
+    "preact-render-to-string": "^6.3.1",
     "recoil": "^0.7.7",
-    "use-sound": "^4.0.1"
+    "use-sound": "^4.0.1",
+    "vike": "^0.4.147"
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.5.0",
