@@ -3,7 +3,11 @@ import { renderToString } from "preact-render-to-string";
 import React from "preact/compat";
 import { escapeInject, dangerouslySkipEscape } from "vike/server";
 
-export { render };
+export { render, passToClient };
+
+const passToClient = [
+    'pageProps',
+]
 
 async function render(pageContext) {
     const { Page, pageProps } = pageContext;

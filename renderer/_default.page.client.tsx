@@ -1,11 +1,11 @@
-import ReactDOM from "preact/compat";
+import { hydrateRoot }from "preact/compat/client";
 import React from "preact/compat";
 
 export { render };
 
 async function render(pageContext) {
     const { Page, pageProps } = pageContext
-    ReactDOM.hydrateRoot(
+    hydrateRoot(
         document.getElementById("page-view"),
         <Page {...pageProps} />
     );
