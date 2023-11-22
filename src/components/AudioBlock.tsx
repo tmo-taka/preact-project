@@ -1,9 +1,9 @@
-import { PlayButton } from './PlayButton'
 import { Suspense } from 'preact/compat';
-import { InputJapaneseForm } from "./InputJapaneseForm";
-import { DisplayText } from './DisplayText'
+import { PlayButton } from '@/components/PlayButton'
+import { InputJapaneseForm } from "@/components/InputJapaneseForm";
+import { DisplayText } from '@/components/DisplayText'
 
-export const AudioBlock = () => {
+const AudioBlock = () => {
     return (
         <div class="w-96">
             <InputJapaneseForm />
@@ -20,3 +20,5 @@ export const AudioBlock = () => {
         </div>
     )
 }
+
+export default AudioBlock;

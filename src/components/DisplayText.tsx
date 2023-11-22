@@ -1,5 +1,5 @@
 import { useContext } from "preact/hooks";
-import { AppState } from '../store/app'
+import { AppState } from '@/store/app'
 
 export const DisplayText: preact.FunctionComponent = () => {
     const state = useContext(AppState);

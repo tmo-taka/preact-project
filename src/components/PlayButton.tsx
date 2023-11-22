@@ -1,6 +1,6 @@
 import { useEffect, useContext } from "preact/hooks";
-import { useTextToSpeak } from "../hooks/useTextToSpeak"
-import { AppState } from '../store/app'
+import { useTextToSpeak } from "@/hooks/useTextToSpeak"
+import { AppState } from '@/store/app'
 
 export const PlayButton: preact.FunctionComponent = () => {
     const state = useContext(AppState);

@@ -1,6 +1,6 @@
 import { useState, useContext } from "preact/hooks";
-import { useTextToEnglish } from '../hooks/useTextToEnglish'
-import { AppState } from '../store/app'
+import { useTextToEnglish } from '@/hooks/useTextToEnglish'
+import { AppState } from '@/store/app'
 
 export const InputJapaneseForm = () => {
     const state = useContext(AppState);
