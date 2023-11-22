@@ -1,5 +1,6 @@
 import { hydrateRoot }from "preact/compat/client";
 import React from "preact/compat";
+import '@/index.css'
 
 export { render };
 
