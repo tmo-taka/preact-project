@@ -1,6 +1,7 @@
 import { useState, useEffect } from "preact/hooks";
 import { Suspense, lazy } from 'preact/compat';
 import { createAppContext, AppState }from '@/store/app';
+import { Loading } from '@/components/Loading'
 import '@/app.css'
 
 export { Page };
@@ -8,13 +9,11 @@ export { Page };
 const Page = () => {
     return (
         <AppState.Provider value={createAppContext()}>
-            <DynamicComponent />
+            <div class="flex justify-center">
+                <DynamicComponent />
+            </div>
         </AppState.Provider>
     );
-}
-
-const Loading = () => {
-    return <div>ローディング</div>
 }
 
 const DynamicComponent = () => {
@@ -24,7 +23,7 @@ const DynamicComponent = () => {
     },[])
 
     return (
-        <Suspense fallback={<div>ローディング</div>}>
+        <Suspense fallback={<Loading />}>
             <Component />
         </Suspense>
     )
