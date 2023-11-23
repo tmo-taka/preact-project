@@ -2,6 +2,7 @@
 import { renderToString } from "preact-render-to-string";
 import React from "preact/compat";
 import { escapeInject, dangerouslySkipEscape } from "vike/server";
+import { DefaultLayout } from "../layouts/default";
 
 export { render, passToClient };
 
@@ -12,7 +13,7 @@ const passToClient = [
 async function render(pageContext) {
     const { Page, pageProps } = pageContext;
     const viewHtml = renderToString(
-        <Page {...pageProps} />
+        <DefaultLayout><Page {...pageProps} /></DefaultLayout>
     );
 
     const title = "Vite SSR";

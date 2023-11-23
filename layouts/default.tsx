@@ -6,7 +6,7 @@ export const DefaultLayout = ({children}) =>{
                     英語翻訳サイト
                 </div>
             </header>
-            <main class="h-screen flex items-center">
+            <main class="h-screen flex items-center justify-center">
                 {children}
             </main>
             <footer class="bg-accent text-center w-full">
