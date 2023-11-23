@@ -9,7 +9,7 @@ export { Page };
 const Page = () => {
     return (
         <AppState.Provider value={createAppContext()}>
-            <div class="flex justify-center">
+            <div class="flex flex-wrap justify-center">
                 <DynamicComponent />
             </div>
         </AppState.Provider>
