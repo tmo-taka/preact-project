@@ -11,3 +11,6 @@
 
 ## Dynamic　import
 Dynamic import（lazy使用時）は`export default`
+
+## Preact performance 
+https://www.inthepocket.com/blog/cookie-though-our-home-made-cookie-banner

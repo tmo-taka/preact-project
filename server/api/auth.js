@@ -15,7 +15,7 @@ export const auth = (app) =>{
         const authName = process.env.ALLOW_USER_NAME
         if(name === authName){
             res.cookie('english', 'allow', {
-                maxAge: 6000,
+                maxAge: 60000,
                 // secure: true,
                 // sameSite: "None",
                 httpOnly: true
