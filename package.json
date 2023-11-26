@@ -4,14 +4,18 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "npm run server:dev",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server:dev": "node ./server"
   },
   "dependencies": {
     "@preact/signals": "^1.2.1",
     "axios": "^1.6.2",
     "axios-oauth-client": "^2.0.4",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
     "flowbite-react": "^0.6.4",
     "path": "^0.12.7",
     "preact": "^10.16.0",
