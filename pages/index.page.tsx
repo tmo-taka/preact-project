@@ -7,7 +7,7 @@ import '@/app.css'
 
 export { Page };
 
-const Page = () => {
+const Page = (pageContext) => {
     return (
         <AppState.Provider value={createAppContext()}>
             <div class="flex flex-wrap justify-center">

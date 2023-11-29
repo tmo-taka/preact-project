@@ -7,14 +7,16 @@ import '@/index.css'
 export { render };
 
 async function render(pageContext) {
-    console.log(document.cookie);
-    console.log(pageContext)
     const { Page, pageProps } = pageContext
+    let modalFlag = true;
+    if(document.cookie.includes('english=allow')) { modalFlag = false }
+
     hydrateRoot(
         document.getElementById("page-view"),
         <DefaultLayout>
             <Page {...pageProps} />
-            <AuthModal />
+            {modalFlag}
+            <AuthModal modalFlag={modalFlag} />
         </DefaultLayout>
     );
 }

@@ -1,4 +1,4 @@
-import { useState } from "preact/hooks";
+import { useState, useMemo } from "preact/hooks";
 import { Modal } from 'flowbite-react'
 
 const postOptions = (text:string) => {
@@ -13,9 +13,20 @@ const postOptions = (text:string) => {
     }
 };
 
-export const AuthModal: preact.FunctionComponent = () => {
+type Props = {
+    modalFlag: boolean;
+}
+
+export const AuthModal: preact.FunctionComponent<Props> = (props) => {
     const [name, setName] = useState<string>('');
     const [openFlag, setOpenFlag] = useState<boolean>(true);
+    const {modalFlag} = props;
+
+    console.log(modalFlag);
+
+    useMemo(() => {
+        setOpenFlag(modalFlag);
+    },[props])
 
     const setData = (event) => {
         const inputValue = event.target.value;
@@ -23,8 +34,12 @@ export const AuthModal: preact.FunctionComponent = () => {
     }
 
     const fetchData = async()  => {
-        const res = await fetch('/login', postOptions(name));
-        console.log(res);
+        try {
+            const res = await fetch('/login', postOptions(name));
+            if(res?.status === 200) {setOpenFlag(false)}
+        } catch(e) {
+            console.log(e);
+        }
     }
 
     return (
