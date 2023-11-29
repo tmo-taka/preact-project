@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
     content: [
+        "./pages/**/*.{tsx}",
+        "./renderer/**/*.{tsx}",
         "./src/**/*.{ts,tsx}",
         "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}"
     ],
