@@ -1,16 +1,13 @@
-import { AudioBlock } from './components/AudioBlock'
-import { RecoilRoot} from 'recoil';
-import { useTextToEnglish } from './hooks/useTextToEnglish'
-import './app.css'
+import { AudioBlock } from '@/components/AudioBlock'
+import { createAppContext, AppState }from '@/store/app';
+import '@/app.css'
 
 export function App() {
     return (
         <>
-            <div>
-                <RecoilRoot>
-                    <AudioBlock />
-                </RecoilRoot>
-            </div>
+            <AppState.Provider value={createAppContext()}>
+                <AudioBlock />
+            </AppState.Provider>
         </>
     )
 }
